@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-import django_heroku
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -20,7 +19,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'wo5%pc+a0%rx@%s^0#78)=r^*cc+gt2$8jdg03uw7#)j9fzq$7'
+#SECRET_KEY = 'wo5%pc+a0%rx@%s^0#78)=r^*cc+gt2$8jdg03uw7#)j9fzq$7'
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -48,7 +47,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -124,6 +122,3 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
-
-
-django_heroku.settings(locals())

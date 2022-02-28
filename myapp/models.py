@@ -1,6 +1,5 @@
 from email.headerregistry import Address
 from pyexpat import model
-from turtle import up
 from django.db import models
 import datetime
 from django.shortcuts import render
